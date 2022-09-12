@@ -8,6 +8,7 @@ RSpec.describe 'mechanics show page' do
     @max = @jaws.mechanics.create!(name: 'Max', years_experience: 3)
     @mary = @jurassic.mechanics.create!(name: 'Mary', years_experience: 2)
     @ron = @jurassic.mechanics.create!(name: 'Ron', years_experience: 6)
+    @mr1 = MechanicsRide.create!(mechanic_id: @max.id, ride_id: @jurassic.id)
   end
 
   # As a user,
@@ -20,6 +21,7 @@ RSpec.describe 'mechanics show page' do
     visit "/mechanics/#{@max.id}"
 
     expect(page).to have_content("Mechanic Name: Max")
-    expect(page).to have_content("Rides: Jaws")
+    expect(page).to have_content("Years of Experience: 3")
+    expect(page).to have_content("Rides: Jaws, Jurassic Park")
   end
 end
