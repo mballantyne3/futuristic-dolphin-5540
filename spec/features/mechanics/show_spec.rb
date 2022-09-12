@@ -17,6 +17,9 @@ RSpec.describe 'mechanics show page' do
   # And the rides are listed by thrill rating in descending order (most thrills first)
 
   it 'displays mechanics name, years of experience, and ride names they are working on' do
-    visit "/mechanics/"
+    visit "/mechanics/#{@max.id}"
+
+    expect(page).to have_content("Mechanic Name: Max")
+    expect(page).to have_content("Rides: Jaws")
   end
 end
